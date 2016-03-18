@@ -83,6 +83,7 @@ public class PrefixMatches {
         private Iterator<String> trieIterator;
         private String prefix;
         private int k;
+        private String currentString="";
 
         public PrefixMatchesIterator(String pref, int k) {
             this.k = k;
@@ -92,19 +93,22 @@ public class PrefixMatches {
 
         @Override
         public boolean hasNext() {
-            return trieIterator.hasNext();
+            if (trieIterator.hasNext()){
+                do {
+                    String tmp = trieIterator.next();
+                    if (tmp.length() < prefix.length() + k) {
+                        currentString = tmp;
+                        return true;
+                    }
+                }
+                while (trieIterator.hasNext());
+            }
+            return false;
         }
 
         @Override
         public T next() {
-            do {
-                String tmp = trieIterator.next();
-                if (tmp.length() < prefix.length() + k) {
-                    return (T) tmp;
-                }
-            }
-            while (trieIterator.hasNext());
-            return null;
+            return (T) currentString;
         }
     }
 
