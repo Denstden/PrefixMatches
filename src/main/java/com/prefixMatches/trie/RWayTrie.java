@@ -125,7 +125,6 @@ public class RWayTrie implements Trie {
     private class RWayTrieIterator<T> implements Iterator<T> {
         private Queue<Node> nodes = new LinkedList<>();
         private Queue<String> strings = new LinkedList<>();
-        private String currentString;
 
         public RWayTrieIterator() {
             for (int i = 0; i < R; i++) {
@@ -153,20 +152,16 @@ public class RWayTrie implements Trie {
 
         @Override
         public boolean hasNext() {
-            if (!nodes.isEmpty()) {
-                currentString = getNextWord();
-                return currentString != null;
-            }
-            return false;
+            return !nodes.isEmpty();
         }
 
         @Override
         public T next() {
-            return (T) currentString;
+            return (T) getNextWord();
         }
 
         private String getNextWord() {
-            String tempString;
+            String tempString=null;
             Node tempNode;
             while (!nodes.isEmpty()) {
                 tempNode = nodes.remove();
@@ -178,10 +173,10 @@ public class RWayTrie implements Trie {
                     }
                 }
                 if (tempNode.weight != -1) {
-                    return tempString;
+                    break;
                 }
             }
-            return null;
+            return tempString;
         }
     }
 

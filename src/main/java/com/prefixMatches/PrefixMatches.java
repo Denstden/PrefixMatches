@@ -2,6 +2,7 @@ package com.prefixMatches;
 
 import com.prefixMatches.trie.Trie;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Class allows to create in-memory dictionary of words.
@@ -84,6 +85,7 @@ public class PrefixMatches {
         private String prefix;
         private int k;
         private String currentString="";
+        private boolean flag=false;
 
         public PrefixMatchesIterator(String pref, int k) {
             this.k = k;
@@ -93,11 +95,13 @@ public class PrefixMatches {
 
         @Override
         public boolean hasNext() {
+            if (flag) return true;
             if (trieIterator.hasNext()){
                 do {
                     String tmp = trieIterator.next();
                     if (tmp.length() < prefix.length() + k) {
                         currentString = tmp;
+                        flag=true;
                         return true;
                     }
                 }
@@ -108,6 +112,10 @@ public class PrefixMatches {
 
         @Override
         public T next() {
+            if (!this.hasNext()){
+                throw new NoSuchElementException();
+            }
+            flag=false;
             return (T) currentString;
         }
     }
