@@ -71,6 +71,7 @@
                 <version>0.7.4.201502262128</version>
                 <executions>
                     <execution>
+                        <id>default-jacoco-check</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
