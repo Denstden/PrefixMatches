@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Iterator;
+
 public class RWayTrieTest {
     private Trie trie;
 
@@ -87,11 +89,6 @@ public class RWayTrieTest {
         trie.add(new Trie.Tuple("tuple", 5));
         boolean expected = false;
         assertEquals(expected, trie.delete("tupl"));
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void wordsWithPrefixNullShouldRiseException(){
-        trie.wordsWithPrefix(null);
     }
 
     @Test

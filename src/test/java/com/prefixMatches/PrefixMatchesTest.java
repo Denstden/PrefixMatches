@@ -1,6 +1,8 @@
-package com.prefixMatches.trie;
+package com.prefixMatches;
 
 import com.prefixMatches.PrefixMatches;
+import com.prefixMatches.trie.RWayTrie;
+import com.prefixMatches.trie.Trie;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -117,15 +119,6 @@ public class PrefixMatchesTest {
         prefixMatches.add(s);
         prefixMatches.size();
         verify(trie, times(1)).size();
-    }
-
-    @Test
-    public void wordWithPrefixSpy() {
-        spy = spy(new RWayTrie());
-        prefixMatches = new PrefixMatches(spy);
-        prefixMatches.add("abcd weqis weqosx skqm weqiox");
-        prefixMatches.wordsWithPrefix("weq", 4);
-        verify(spy, times(1)).wordsWithPrefix("weq");
     }
 
     @Test
