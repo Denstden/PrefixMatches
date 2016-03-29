@@ -35,14 +35,14 @@ public class RWayTrie implements Trie {
     /**
      * Adds to rWayTrie a tuple.
      *
-     * @param tuple consists from two elements - word(term) and his length(weight)
+     * @param tuple consists from 2 elements - word(term) and his length(weight)
      */
     public void add(Tuple tuple) {
         Node temp = root;
         boolean flag = false;
         for (int i = 0; i < tuple.getWeight(); i++) {
             char c = tuple.getTerm().charAt(i);
-            if (temp.next[c - 'a'] != null) {//if there is son with value 'c' go down
+            if (temp.next[c - 'a'] != null) { //if there is son with value 'c'
                 temp = temp.next[c - 'a'];
                 continue;
             }
@@ -51,8 +51,9 @@ public class RWayTrie implements Trie {
             temp.next[c - 'a'].value = c;
             temp = temp.next[c - 'a'];
         }
-        if (flag || temp.weight == -1)//increase the size, if no such word as term in dictionary
-            size++;
+        if (flag || temp.weight == -1) { //increase the size, if no such
+            size++;                      //word as term in dictionary
+        }
         temp.weight = tuple.getWeight();
     }
 
@@ -65,7 +66,7 @@ public class RWayTrie implements Trie {
     public boolean contains(String word) {
         Node temp = root;
         for (int i = 0; i < word.length(); i++) {
-            if (temp.next[word.charAt(i) - 'a'] == null) {//if at least one character is not the same
+            if (temp.next[word.charAt(i) - 'a'] == null) {
                 return false;
             }
             temp = temp.next[word.charAt(i) - 'a'];
@@ -80,24 +81,28 @@ public class RWayTrie implements Trie {
      * @return true if a word has been removed from trie, false - else.
      */
     public boolean delete(String word) {
-        if (!contains(word))
+        if (!contains(word)) {
             return false;
+        }
         Node temp = root;
         LinkedList<Node> stack = new LinkedList<>();
-        for (int i = 0; i < word.length(); i++) {//add to stack all nodes for which need to pass to get the word out
+        for (int i = 0; i < word.length(); i++) {
             stack.addFirst(temp.next[word.charAt(i) - 'a']);
             temp = temp.next[word.charAt(i) - 'a'];
         }
 
-        if (!stack.isEmpty()) stack.peek().weight = -1;
+        if (!stack.isEmpty()) {
+            stack.peek().weight = -1;
+        }
         while (!stack.isEmpty()) {
             temp = stack.pop();
             for (int i = 0; i < temp.next.length; i++) {
-                if (temp.next[i] != null) {//if there is at least one son, node can not be removed
-                    return true;
+                if (temp.next[i] != null) { //if there is at least one son,
+                    return true;            //node can not be removed
                 }
             }
-            if ((temp.weight == -1 || temp.weight >= word.length()) && !stack.isEmpty()) {
+            if ((temp.weight == -1 || temp.weight >= word.length()) &&
+                    !stack.isEmpty()) {
                 stack.peek().next[temp.value - 'a'] = null;
             }
         }
@@ -146,8 +151,9 @@ public class RWayTrie implements Trie {
                 }
                 tempNode = tempNode.next[pref.charAt(i) - 'a'];
             }
-            if (!flag)
+            if (!flag) {
                 nodes.add(tempNode);
+            }
         }
 
         @Override
@@ -161,7 +167,7 @@ public class RWayTrie implements Trie {
         }
 
         private String getNextWord() {
-            String tempString=null;
+            String tempString = null;
             Node tempNode;
             while (!nodes.isEmpty()) {
                 tempNode = nodes.remove();

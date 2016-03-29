@@ -11,14 +11,14 @@ public interface Trie {
     /**
      * Object of this class allows to store a couple.
      */
-    class Tuple{
+    class Tuple {
         private String term;
         private int weight;
 
         /**
          * Constructs a tuple from two parameters - term and weight.
          *
-         * @param term - word in tuple.
+         * @param term   - word in tuple.
          * @param weight - words length.
          */
         public Tuple(String term, int weight) {
@@ -38,7 +38,7 @@ public interface Trie {
     /**
      * Adds to trie a tuple.
      *
-     * @param tuple consists from two elements - word(term) and his length(weight)
+     * @param tuple consists from two elements - word(term), his length(weight)
      */
     void add(Tuple tuple);
 

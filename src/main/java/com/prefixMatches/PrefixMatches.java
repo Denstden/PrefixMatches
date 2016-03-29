@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
  * @author Denys Storozhenko
  */
 public class PrefixMatches {
-
+    public final static int DEF_K = 3;
     private Trie trie;
 
     /**
@@ -84,8 +84,8 @@ public class PrefixMatches {
         private Iterator<String> trieIterator;
         private String prefix;
         private int k;
-        private String currentString="";
-        private boolean flag=false;
+        private String currentString = "";
+        private boolean flag = false;
 
         public PrefixMatchesIterator(String pref, int k) {
             this.k = k;
@@ -95,13 +95,15 @@ public class PrefixMatches {
 
         @Override
         public boolean hasNext() {
-            if (flag) return true;
-            if (trieIterator.hasNext()){
+            if (flag) {
+                return true;
+            }
+            if (trieIterator.hasNext()) {
                 do {
                     String tmp = trieIterator.next();
                     if (tmp.length() < prefix.length() + k) {
                         currentString = tmp;
-                        flag=true;
+                        flag = true;
                         return true;
                     }
                 }
@@ -112,17 +114,18 @@ public class PrefixMatches {
 
         @Override
         public T next() {
-            if (!this.hasNext()){
+            if (!this.hasNext()) {
                 throw new NoSuchElementException();
             }
-            flag=false;
+            flag = false;
             return (T) currentString;
         }
     }
 
 
     /**
-     * Returns iterator for all words in dictionary, which starts with prefix and has length from prefix length to prefix length+k
+     * Returns iterator for all words in dictionary, which starts with prefix
+     * and has length from prefix length to prefix length+k
      *
      * @param pref prefix of each returned word
      * @param k    max length of word
@@ -147,13 +150,14 @@ public class PrefixMatches {
     }
 
     /**
-     * Returns iterator for all words in dictionary, which starts with prefix and has length from prefix length to prefix length+3
+     * Returns iterator for all words in dictionary, which starts with prefix
+     * and has length from prefix length to prefix length+3
      *
      * @param pref prefix of each returned word
      * @return iterator for all words, which starts with prefix
      */
     public Iterable<String> wordsWithPrefix(String pref) {
-        return wordsWithPrefix(pref, 3);
+        return wordsWithPrefix(pref, DEF_K);
     }
 }
 

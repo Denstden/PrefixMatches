@@ -5,8 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Iterator;
-
 public class RWayTrieTest {
     private Trie trie;
 
@@ -34,7 +32,7 @@ public class RWayTrieTest {
         trie.add(new Trie.Tuple("tupleone", 8));
         trie.add(new Trie.Tuple("tupleone", 8));
         int expected = 1;
-        assertEquals(expected,trie.size());
+        assertEquals(expected, trie.size());
     }
 
 

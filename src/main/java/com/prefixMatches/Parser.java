@@ -20,8 +20,8 @@ public class Parser {
         return filename;
     }
 
-    public void setFilename(String filename) {
-        this.filename = filename;
+    public void setFilename(String fname) {
+        this.filename = fname;
     }
 
     /**
@@ -31,11 +31,12 @@ public class Parser {
      * @throws FileNotFoundException
      */
     public String parse() throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File(getClass().getClassLoader().getResource(filename).getFile()));
+        Scanner scanner = new Scanner(new File(getClass().getClassLoader().
+                getResource(filename).getFile()));
         StringBuilder stringBuilder = new StringBuilder();
-        while (scanner.hasNext()){
+        while (scanner.hasNext()) {
             String tmp = scanner.next();
-            if (tmp.matches("^[a-zA-Z]+$")){
+            if (tmp.matches("^[a-zA-Z]+$")) {
                 stringBuilder.append(tmp).append(" ");
             }
         }

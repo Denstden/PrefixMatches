@@ -1,6 +1,5 @@
 package com.prefixMatches;
 
-import com.prefixMatches.PrefixMatches;
 import com.prefixMatches.trie.RWayTrie;
 import com.prefixMatches.trie.Trie;
 import org.junit.Before;
