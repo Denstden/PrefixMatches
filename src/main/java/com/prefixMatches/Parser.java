@@ -1,4 +1,4 @@
-package com.prefixMatches;
+package com.prefixmatches;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,6 +1,6 @@
-package com.prefixMatches;
+package com.prefixmatches;
 
-import com.prefixMatches.trie.RWayTrie;
+import com.prefixmatches.trie.RWayTrie;
 import java.io.FileNotFoundException;
 
 public class Main {

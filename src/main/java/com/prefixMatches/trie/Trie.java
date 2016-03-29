@@ -1,4 +1,4 @@
-package com.prefixMatches.trie;
+package com.prefixmatches.trie;
 
 /**
  * Interface contains main methods for working with trie.

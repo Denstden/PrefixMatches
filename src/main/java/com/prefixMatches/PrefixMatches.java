@@ -1,6 +1,6 @@
-package com.prefixMatches;
+package com.prefixmatches;
 
-import com.prefixMatches.trie.Trie;
+import com.prefixmatches.trie.Trie;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 

@@ -1,4 +1,4 @@
-package com.prefixMatches.trie;
+package com.prefixmatches.trie;
 
 import java.util.*;
 

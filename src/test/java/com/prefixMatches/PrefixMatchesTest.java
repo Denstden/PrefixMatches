@@ -1,7 +1,7 @@
-package com.prefixMatches;
+package com.prefixmatches;
 
-import com.prefixMatches.trie.RWayTrie;
-import com.prefixMatches.trie.Trie;
+import com.prefixmatches.trie.RWayTrie;
+import com.prefixmatches.trie.Trie;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
